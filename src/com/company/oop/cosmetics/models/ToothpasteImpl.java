@@ -23,11 +23,9 @@ public class ToothpasteImpl extends ProductImpl implements Toothpaste {
     @Override
     public String print() {
         return String.format("""
-                #%s %s
-                 #Price: $%.2f
-                 #Gender: %s
-                 #Ingredients: %s
-                 ===""", getName(), getBrandName(), getPrice(), getGenderType(), getIngredients());
+                %s
+                #Ingredients: %s
+                """, super.print(), getIngredients());
     }
 
     @Override

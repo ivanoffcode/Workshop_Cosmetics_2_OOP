@@ -7,7 +7,6 @@ import com.company.oop.cosmetics.utils.ValidationHelpers;
 
 public class ShampooImpl extends ProductImpl implements Shampoo {
 
-
     private int millilitres;
     private UsageType usageType;
 
@@ -34,15 +33,11 @@ public class ShampooImpl extends ProductImpl implements Shampoo {
         return usageType;
     }
 
+    @Override
     public String print() {
-        return String.format("""
-                #%s %s
-                 #Price: $%.2f
-                 #Gender: %s
-                 #Milliliters: %d
-                 #Usage: %s
-                 ===""", getName(), getBrandName(), getPrice(), getGenderType(), getMillilitres(), getUsageType());
-
+        return String.format("%s%n" +
+                " #Milliliters: %d%n" +
+                " #Usage: %s%n", super.print(), getMillilitres(), getUsageType());
     }
 
     @Override

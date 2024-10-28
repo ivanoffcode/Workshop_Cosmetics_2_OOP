@@ -15,7 +15,7 @@ public abstract class ProductImpl implements Product {
     private double price;
     private GenderType genderType;
 
-    public ProductImpl(String name, String brandName, double price, GenderType genderType) {
+    protected ProductImpl(String name, String brandName, double price, GenderType genderType) {
         setName(name);
         setBrandName(brandName);
         setPrice(price);
@@ -27,8 +27,12 @@ public abstract class ProductImpl implements Product {
         return name;
     }
 
-    private void setName(String name) {
+    protected void validateName(String name) {
         ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH, "Name");
+    }
+
+    private void setName(String name) {
+        validateName(name);
         this.name = name;
     }
 
@@ -37,8 +41,12 @@ public abstract class ProductImpl implements Product {
         return brandName;
     }
 
-    private void setBrandName(String brandName) {
+    protected void validateBrandName(String brandName) {
         ValidationHelpers.validateStringLength(brandName, BRAND_NAME_MIN_LENGTH, BRAND_NAME_MAX_LENGTH, "Brand");
+    }
+
+    private void setBrandName(String brandName) {
+        validateBrandName(brandName);
         this.brandName = brandName;
     }
 
@@ -60,4 +68,11 @@ public abstract class ProductImpl implements Product {
     private void setGenderType(GenderType genderType) {
         this.genderType = genderType;
     }
+
+    public String print() {
+        return String.format("#%s %s%n" +
+                " #Price: $%.2f%n" +
+                " #Gender: %s", getName(), getBrandName(), getPrice(), getGenderType());
+    }
+
 }
