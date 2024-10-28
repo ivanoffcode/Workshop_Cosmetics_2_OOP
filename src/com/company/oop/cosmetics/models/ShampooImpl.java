@@ -37,9 +37,7 @@ public class ShampooImpl extends ProductImpl implements Shampoo {
     public String print() {
         return String.format("%s%n" +
                 " #Milliliters: %d%n" +
-                " #Usage: %s%n", super.print(),
-
-                getMillilitres(), getUsageType());
+                " #Usage: %s%n", super.print(), getMillilitres(), getUsageType());
     }
 
     @Override
